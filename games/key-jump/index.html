@@ -4,24 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nhảy Qua Quái Vật</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="wrap">
-    <div class="topbar">
-      <a href="../../index.html" class="btn small">⬅ Về trang chính</a>
+    <header class="topbar">
+      <a href="../../index.html" class="btn small">⬅ Trang chính</a>
       <div class="topbar-right">
-        <button id="btnMusic" class="btn small">🎵 Nhạc: Bật</button>
+        <button id="btnMusic" class="btn small blue">🎵 Nhạc: Bật</button>
         <button id="btnMenu" class="btn small">☰ Chọn màn</button>
       </div>
-    </div>
+    </header>
 
-    <div class="stage">
+    <main class="stage">
       <canvas id="game" width="960" height="540"></canvas>
       <div id="overlay" class="overlay"></div>
-    </div>
+    </main>
 
-    <div id="keyboard" class="keyboard"></div>
+    <section id="keyboard" class="keyboard" aria-label="Bàn phím ảo"></section>
   </div>
 
   <script src="js/levels.js"></script>
@@ -29,7 +32,9 @@
   <script src="js/sprites.js"></script>
   <script src="js/render.js"></script>
   <script src="js/keyboard.js"></script>
+  <script src="js/hands.js"></script>
   <script src="js/ui.js"></script>
+  <script src="js/guide.js"></script>
   <script src="js/game.js"></script>
 </body>
 </html>

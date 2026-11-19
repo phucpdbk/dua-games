@@ -43,8 +43,9 @@ window.KJ = window.KJ || {};
 
       ov.innerHTML =
         '<div class="panel">' +
-        '<h1>⌨️ Nhảy Qua Quái Vật</h1>' +
-        '<p>Mỗi con quái vật mang một chữ cái. Gõ đúng phím đó để bạn nhỏ nhảy qua và nhặt đồng vàng!</p>' +
+        '<div class="menu-head"><img src="img/hero_jump.webp" alt=""><h1>Nhảy Qua Quái Vật</h1>' +
+        '<img src="img/monster_slime.webp" alt=""></div>' +
+        '<p>Mỗi con quái vật giơ một chữ cái. Gõ đúng phím đó để bạn nhỏ nhảy qua và nhặt đồng vàng!</p>' +
         '<div class="level-grid">' + buttons + '</div>' +
         '<p>Nhấn <b>Enter</b> để chơi màn mới nhất</p>' +
         '</div>';

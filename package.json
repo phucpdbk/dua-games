@@ -1,0 +1,12 @@
+{
+  "name": "dua-games",
+  "private": true,
+  "type": "module",
+  "description": "Bộ game học tập cho trẻ bằng HTML/JS thuần.",
+  "scripts": {
+    "art": "node tools/gen_art.mjs"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^1.0.13"
+  }
+}
