@@ -1,24 +1,25 @@
-// Màn hình chọn màn, hoàn thành màn, và lưu tiến độ.
+// Màn hình chọn màn và hoàn thành màn.
 window.KJ = window.KJ || {};
 
 (function (KJ) {
   'use strict';
 
-  const STORE_KEY = 'keyjump-progress-v1';
+  const NAME = String((window.PROFILE && window.PROFILE.nickname) || 'bạn')
+    .replace(/[&<>"']/g, c => '&#' + c.charCodeAt(0) + ';');
 
-  KJ.progress = {
-    load() {
-      try {
-        const raw = localStorage.getItem(STORE_KEY);
-        const data = raw ? JSON.parse(raw) : null;
-        if (data && typeof data.unlocked === 'number') return data;
-      } catch (e) { /* bỏ qua: chế độ ẩn danh hoặc bị chặn */ }
-      return { unlocked: 0, stars: {} };
-    },
-    save(data) {
-      try { localStorage.setItem(STORE_KEY, JSON.stringify(data)); } catch (e) { /* bỏ qua */ }
-    },
+  const SYNC_TEXT = {
+    synced: '☁️ Đã lưu lên mạng, đổi máy vẫn chơi tiếp được',
+    offline: '📴 Chưa kết nối mạng, đang lưu tạm trong máy',
+    local: '',
   };
+
+  function praiseFor(stars) {
+    if (stars === 3) return pick(['Tuyệt vời, ' + NAME + ' ơi! 🎉', NAME + ' giỏi quá! 🎉', 'Siêu đỉnh luôn, ' + NAME + '! 🌟']);
+    if (stars === 2) return pick([NAME + ' giỏi lắm! 👏', 'Hay lắm, ' + NAME + '! 👏']);
+    return 'Hoàn thành rồi, ' + NAME + '! 💪';
+  }
+
+  function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
 
   function starText(n) {
     return '⭐'.repeat(n) + '☆'.repeat(3 - n);
@@ -43,11 +44,12 @@ window.KJ = window.KJ || {};
 
       ov.innerHTML =
         '<div class="panel">' +
-        '<div class="menu-head"><img src="img/hero_jump.webp" alt=""><h1>Nhảy Qua Quái Vật</h1>' +
+        '<div class="menu-head"><img src="../../assets/dua.webp" alt=""><h1>Nhảy Qua Quái Vật</h1>' +
         '<img src="img/monster_slime.webp" alt=""></div>' +
-        '<p>Mỗi con quái vật giơ một chữ cái. Gõ đúng phím đó để bạn nhỏ nhảy qua và nhặt đồng vàng!</p>' +
+        '<p>Chào <b>' + NAME + '</b>! Mỗi con quái vật giơ một chữ cái. Gõ đúng phím đó để nhảy qua và nhặt đồng vàng nhé!</p>' +
         '<div class="level-grid">' + buttons + '</div>' +
         '<p>Nhấn <b>Enter</b> để chơi màn mới nhất</p>' +
+        (SYNC_TEXT[KJ.progress.status] ? '<p class="sync">' + SYNC_TEXT[KJ.progress.status] + '</p>' : '') +
         '</div>';
       ov.classList.remove('hidden');
       ov.querySelectorAll('.level-btn:not(.locked)').forEach(b => {
@@ -58,13 +60,12 @@ window.KJ = window.KJ || {};
     showLevelDone(levelIndex, stars, mistakes, handlers) {
       const ov = el('overlay');
       const hasNext = levelIndex + 1 < KJ.LEVELS.length;
-      const praise = stars === 3 ? 'Tuyệt vời! 🎉' : stars === 2 ? 'Giỏi lắm! 👏' : 'Hoàn thành! 💪';
       ov.innerHTML =
         '<div class="panel">' +
-        '<h1>' + praise + '</h1>' +
+        '<div class="menu-head"><img src="../../assets/dua.webp" alt=""><h1>' + praiseFor(stars) + '</h1></div>' +
         '<div class="big-stars">' + starText(stars) + '</div>' +
         '<p>Màn ' + (levelIndex + 1) + ' xong rồi! Gõ sai: <b>' + mistakes + '</b> lần.</p>' +
-        (hasNext ? '' : '<p>🏆 Con đã hoàn thành tất cả các màn!</p>') +
+        (hasNext ? '' : '<p>🏆 ' + NAME + ' đã hoàn thành tất cả các màn! Quá giỏi!</p>') +
         '<div class="button-row">' +
         '<button class="btn blue" id="btnRetry">🔁 Chơi lại</button>' +
         (hasNext ? '<button class="btn green" id="btnNext">▶ Màn tiếp (Enter)</button>' : '') +

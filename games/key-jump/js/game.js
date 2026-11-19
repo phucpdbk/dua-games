@@ -230,7 +230,10 @@ window.KJ = window.KJ || {};
       musicBtn.textContent = '🎵 Nhạc: ' + (on ? 'Bật' : 'Tắt');
       musicBtn.blur();
     };
-    await Promise.all([KJ.loadImages(), document.fonts ? document.fonts.ready : null]);
+    const [, , synced] = await Promise.all([
+      KJ.loadImages(), document.fonts ? document.fonts.ready : null, KJ.progress.sync(progress),
+    ]);
+    progress = synced;
     window.addEventListener('keydown', onKeyDown); // chỉ nhận phím khi ảnh đã sẵn sàng
     openMenu();
     requestAnimationFrame(frame);

@@ -22,6 +22,9 @@ export const PROMPTS = {
   hero_idle: sprite("The SAME boy as in the reference image (same face, orange cap, green star t-shirt, blue shorts, " +
     "red sneakers, backpack), full body, side view facing RIGHT, standing still on both feet, ready and curious, " +
     "one hand waving, friendly smile."),
+  dua: sprite("A super cute cartoon pineapple mascot character with a happy smiling face, big sparkly eyes, rosy cheeks, " +
+    "tiny arms waving hello and tiny feet, golden-yellow diamond-pattern body and a bright green leafy crown, " +
+    "full body, front view.", { out: "assets", maxSize: 384 }),
   monster_slime: sprite(MONSTER + "A round wobbly purple slime blob with two tiny stubby feet and a little drip on its head."),
   monster_spiky: sprite(MONSTER + "A chubby red round hedgehog-like creature with soft orange spikes on its back and tiny paws."),
   monster_dino: sprite(MONSTER + "A small chubby green baby dinosaur with little horns, a round belly and short arms."),

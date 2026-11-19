@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Góc Game Học Tập</title>
+  <title>Góc Game của Dứa</title>
+  <link rel="icon" href="assets/dua.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
@@ -11,9 +12,12 @@
 </head>
 <body>
   <header class="hub-header">
-    <img class="hub-hero" src="games/key-jump/img/hero_jump.webp" alt="">
-    <h1>Góc Game Học Tập</h1>
-    <p>Chọn một trò chơi để bắt đầu nhé!</p>
+    <div class="hub-mascots">
+      <img class="hub-dua" src="assets/dua.webp" alt="Linh vật quả dứa">
+      <div class="bubble" id="greeting">Chào Dứa!</div>
+    </div>
+    <h1>Góc Game của <span class="name">Dứa</span></h1>
+    <p>Hôm nay mình chơi gì nhỉ?</p>
   </header>
 
   <main class="game-grid">
@@ -24,20 +28,23 @@
       </div>
       <h2>Nhảy Qua Quái Vật</h2>
       <p>Luyện gõ phím: gõ đúng chữ quái vật giơ lên để nhảy qua và nhặt vàng!</p>
-      <span class="badge">⌨️ Gõ phím · 15 màn</span>
+      <span class="badge" id="kjProgress">⌨️ Gõ phím · 15 màn</span>
     </a>
 
     <div class="game-card soon">
       <div class="game-icon">🔢</div>
       <h2>Sắp ra mắt</h2>
-      <p>Trò chơi tiếp theo đang được làm...</p>
+      <p>Bố đang làm thêm trò mới cho Dứa...</p>
     </div>
 
     <div class="game-card soon">
       <div class="game-icon">🔤</div>
       <h2>Sắp ra mắt</h2>
-      <p>Trò chơi tiếp theo đang được làm...</p>
+      <p>Bố đang làm thêm trò mới cho Dứa...</p>
     </div>
   </main>
+
+  <script src="assets/profile.js"></script>
+  <script src="assets/hub.js"></script>
 </body>
 </html>

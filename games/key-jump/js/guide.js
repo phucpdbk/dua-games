@@ -17,7 +17,7 @@ window.KJ = window.KJ || {};
   function allKeys() { return g.level.newKeys.concat(g.level.reviewKeys); }
 
   function renderStep1() {
-    el('gTitle').textContent = '✋ Đặt tay vào vị trí';
+    el('gTitle').textContent = '✋ ' + ((window.PROFILE && window.PROFILE.nickname) || 'Bạn') + ' ơi, đặt tay vào vị trí nhé';
     el('gText').innerHTML = 'Sờ tìm 2 phím có <b>gờ nổi</b>: <b>F</b> và <b>J</b>.<br>' +
       'Đặt <b>ngón trỏ trái</b> lên F, <b>ngón trỏ phải</b> lên J.<br>Các ngón khác xếp hàng bên cạnh.' +
       '<br>👇 Nhìn hình bàn tay ở bàn phím bên dưới. Nhấn F và J để tiếp tục.';

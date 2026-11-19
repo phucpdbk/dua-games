@@ -117,6 +117,8 @@ body {
 .menu-head { display: flex; align-items: center; justify-content: center; gap: 14px; }
 .menu-head img { height: clamp(60px, 10vw, 100px); }
 
+.panel p.sync { font-size: 14px; margin: 0; color: #64748b; }
+
 .level-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
