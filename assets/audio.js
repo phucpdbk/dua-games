@@ -1,7 +1,7 @@
-// Âm thanh tự tạo bằng WebAudio (không cần file mp3).
-window.KJ = window.KJ || {};
+// Âm thanh dùng chung cho các game, tự tạo bằng WebAudio (không cần file mp3).
+window.GameAudio = null;
 
-(function (KJ) {
+(function () {
   'use strict';
 
   let ctx = null;
@@ -40,6 +40,8 @@ window.KJ = window.KJ || {};
     ok: () => tone(880, 0, 0.08, 'triangle', 0.15),
     coin: () => { tone(988, 0, 0.08, 'square', 0.1); tone(1319, 0.08, 0.3, 'square', 0.1); },
     wrong: () => tone(160, 0, 0.3, 'sawtooth', 0.12, 90),
+    hit: () => { tone(120, 0, 0.35, 'square', 0.18, 50); tone(90, 0.05, 0.3, 'triangle', 0.15, 40); },
+    lose: () => [392, 349, 311, 262].forEach((f, i) => tone(f, i * 0.22, 0.3, 'triangle', 0.12)),
     win: () => [523, 659, 784, 1047, 784, 1047].forEach((f, i) => tone(f, i * 0.12, 0.2, 'square', 0.1)),
   };
 
@@ -55,7 +57,7 @@ window.KJ = window.KJ || {};
     musicStep++;
   }
 
-  KJ.audio = {
+  window.GameAudio = {
     play(name) { if (SFX[name]) SFX[name](); },
     startMusic() {
       if (!musicOn || musicTimer || !ac()) return;
@@ -72,4 +74,4 @@ window.KJ = window.KJ || {};
     },
     isMusicOn() { return musicOn; },
   };
-})(window.KJ);
+})();

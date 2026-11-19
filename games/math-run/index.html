@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chạy Đua Toán Học · Góc Game của Dứa</title>
+  <link rel="icon" href="../../assets/dua.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/game.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a href="../../index.html" class="btn small">⬅ Trang chính</a>
+      <div class="topbar-right">
+        <button id="btnRead" class="btn small blue">🔊 Đọc đề: Bật</button>
+        <button id="btnMusic" class="btn small blue">🎵 Nhạc: Bật</button>
+        <button id="btnMenu" class="btn small">☰ Chọn màn</button>
+      </div>
+    </header>
+
+    <main class="stage">
+      <canvas id="game" width="960" height="540"></canvas>
+      <div id="card" class="card hidden" aria-live="polite">
+        <div id="cardText" class="card-text"></div>
+        <div class="card-timer"><div id="cardTimer"></div></div>
+        <div id="cardHeard" class="card-heard"></div>
+      </div>
+      <div id="overlay" class="overlay"></div>
+    </main>
+
+    <section class="controls" aria-label="Trả lời">
+      <button id="btnMic" class="btn mic">🎤 Bật giọng nói</button>
+      <div id="pad" class="pad">
+        <button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button>
+        <button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button>
+        <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button>
+        <button data-k="0">0</button><button data-k="del" class="del">⌫</button><button data-k="ok" class="ok">✓</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="../../assets/profile.js"></script>
+  <script src="../../assets/cloud.js"></script>
+  <script src="../../assets/audio.js"></script>
+  <script src="../../assets/progress.js"></script>
+  <script src="js/levels.js"></script>
+  <script src="js/numbers.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

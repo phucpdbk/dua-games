@@ -77,7 +77,7 @@ body {
 
 .game-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 0.8fr;
   gap: 24px;
   max-width: 1040px;
   margin: 20px auto;

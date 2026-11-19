@@ -11,9 +11,15 @@
   document.getElementById('greeting').textContent = greeting;
   document.querySelectorAll('.name').forEach(el => { el.textContent = name; });
 
-  try {
-    const kj = JSON.parse(localStorage.getItem('keyjump-progress-v1') || 'null');
-    const done = kj && kj.stars ? Object.keys(kj.stars).length : 0;
-    if (done > 0) document.getElementById('kjProgress').textContent = '⭐ Đã qua ' + done + '/15 màn';
-  } catch (e) { /* bỏ qua */ }
+  const GAMES = [
+    { storeKey: 'keyjump-progress-v1', badge: 'kjProgress', total: 15 },
+    { storeKey: 'mathrun-progress-v1', badge: 'mrProgress', total: 11 },
+  ];
+  GAMES.forEach(g => {
+    try {
+      const data = JSON.parse(localStorage.getItem(g.storeKey) || 'null');
+      const done = data && data.stars ? Object.keys(data.stars).length : 0;
+      if (done > 0) document.getElementById(g.badge).textContent = '⭐ Đã qua ' + done + '/' + g.total + ' màn';
+    } catch (e) { /* bỏ qua */ }
+  });
 })();

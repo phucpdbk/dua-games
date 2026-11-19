@@ -12,6 +12,10 @@ const sprite = (prompt, extra = {}) => ({ prompt, style: SPRITE, ratio: "1:1", o
 const MONSTER = "A cute, funny (NOT scary) little monster for kids, full body, side view facing LEFT, standing on its feet, " +
   "big expressive eyes, mischievous grin. ";
 
+const MR = "games/math-run/img";
+const obstacle = (prompt) => sprite("A single obstacle for a kids' running game, side view, sitting on the ground, " +
+  "chunky and clearly readable, about as tall as a small child's knee to waist. " + prompt, { out: MR, maxSize: 320 });
+
 export const PROMPTS = {
   hero: sprite("A cheerful little boy adventurer about 6 years old, full body, side view facing RIGHT, mid running pose " +
     "with one leg forward, wearing a bright orange cap, green t-shirt with a yellow star, blue shorts, red sneakers, " +
@@ -34,6 +38,27 @@ export const PROMPTS = {
   coin: sprite("A shiny round gold coin with an embossed star in the middle, front view, glossy highlight.", { maxSize: 128 }),
   goal: sprite("A cute small cottage with a red roof, round window and wooden door, next to a tall flagpole with a " +
     "waving bright green flag with a yellow star, a few flowers at the base, front-side view.", { maxSize: 512 }),
+  hero_hurt: sprite("The SAME boy as in the reference image (same face, orange cap, green star t-shirt, blue shorts, " +
+    "red sneakers, backpack), full body, side view facing RIGHT, sitting on the ground after a funny bump, dizzy with " +
+    "little cartoon stars circling his head, sheepish smile, not hurt.", { out: MR }),
+  ob_rock: obstacle("A big round grey boulder with patches of green moss and a few small pebbles beside it."),
+  ob_log: obstacle("A fallen wooden tree log lying horizontally, with visible rings at the end and a small leafy twig."),
+  ob_crate: obstacle("A sturdy wooden crate with metal corners and nails, slightly weathered."),
+  ob_stump: obstacle("A tree stump with roots and two cute red-spotted mushrooms growing on it."),
+  ob_hay: obstacle("A round golden hay bale tied with rope, a few loose straws."),
+  mr_bg: {
+    prompt: "Wide landscape background: sunny forest edge with tall pine trees and round leafy trees, distant blue " +
+      "mountains with a little snow on top, a sparkling river in the middle distance, wildflowers, bright blue sky with " +
+      "soft clouds. The bottom fifth is an even, flat light-green meadow edge so ground can be placed over it. " +
+      "The left and right edges should look similar.",
+    style: SCENE, ratio: "21:9", out: MR, maxSize: 1920, cut: false, refs: ["hero"],
+  },
+  mr_ground: {
+    prompt: "Side-view cross-section strip of a running track ground for a platform game, filling the ENTIRE image edge " +
+      "to edge: a sandy light-brown dirt path along the top edge with small pebbles and tufts of grass at the very top, " +
+      "then layered warm earth with stones down to the bottom. Horizontally uniform so it can repeat.",
+    style: SCENE, ratio: "21:9", out: MR, maxSize: 1024, cut: "top", refs: ["hero"],
+  },
   bg: {
     prompt: "Wide landscape background: bright blue sky with big fluffy white clouds, rolling green hills in the distance, " +
       "a few round cartoon trees and small bushes, gentle colours fading lighter toward the horizon. The bottom fifth is " +

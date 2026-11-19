@@ -11,6 +11,9 @@ Mở file `index.html` bằng trình duyệt (nhấp đúp là được).
 | Game | Mô tả |
 |------|-------|
 | [Nhảy Qua Quái Vật](games/key-jump/index.html) | Luyện gõ phím: mỗi con quái vật mang một chữ cái, gõ đúng phím để nhân vật nhảy qua. 15 màn từ F/J đến hàng số. |
+| [Chạy Đua Toán Học](games/math-run/index.html) | Cộng trừ: mỗi chướng ngại vật kèm một phép tính, **nói** đáp án (tiếng Việt, Web Speech API, cần Chrome/Edge) hoặc gõ số để nhảy qua; 3 tim. 11 màn từ cộng trong 10 đến cộng trừ có nhớ trong 100. |
+
+Kiểm thử: `node --test tests/` (đọc số tiếng Việt, sinh phép tính).
 
 ## Lưu tiến trình
 
@@ -26,9 +29,11 @@ service cloud.firestore {
   match /databases/{database}/documents {
     match /players/dua {
       allow read: if true;
-      allow write: if request.resource.data.keys().hasOnly(['keyjump'])
-                   && request.resource.data.keyjump is string
-                   && request.resource.data.keyjump.size() < 2000;
+      allow write: if request.resource.data.keys().hasOnly(['keyjump', 'mathrun'])
+                   && request.resource.data.get('keyjump', '') is string
+                   && request.resource.data.get('keyjump', '').size() < 2000
+                   && request.resource.data.get('mathrun', '') is string
+                   && request.resource.data.get('mathrun', '').size() < 2000;
     }
   }
 }
