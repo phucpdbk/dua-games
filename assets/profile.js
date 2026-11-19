@@ -4,5 +4,5 @@
 window.PROFILE = {
   nickname: 'Dứa',
   playerId: 'dua',
-  firebase: { projectId: '', apiKey: '' },
+  firebase: { projectId: 'dua-games-8297e', apiKey: 'AIzaSyCsetOhsMwvSY6WBFt9tTGpMFcFjM78500' },
 };

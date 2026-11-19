@@ -12,6 +12,28 @@ Mở file `index.html` bằng trình duyệt (nhấp đúp là được).
 |------|-------|
 | [Nhảy Qua Quái Vật](games/key-jump/index.html) | Luyện gõ phím: mỗi con quái vật mang một chữ cái, gõ đúng phím để nhân vật nhảy qua. 15 màn từ F/J đến hàng số. |
 
+## Lưu tiến trình
+
+Tiến trình luôn được lưu trong máy (localStorage) và đồng bộ lên Firestore (dự án Firebase `dua-games-8297e`)
+qua REST, cấu hình ở `assets/profile.js`. Khi gộp, game lấy màn mở xa nhất và số sao cao nhất, nên đổi máy không mất gì.
+
+Firestore rules chỉ cho đọc/ghi document `players/dua` với các trường đã khai báo. Khi thêm game mới có lưu tiến trình,
+thêm tên trường của game đó vào `hasOnly([...])` trong rules trên Firebase console:
+
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /players/dua {
+      allow read: if true;
+      allow write: if request.resource.data.keys().hasOnly(['keyjump'])
+                   && request.resource.data.keyjump is string
+                   && request.resource.data.keyjump.size() < 2000;
+    }
+  }
+}
+```
+
 ## Hình ảnh
 
 Hình nhân vật, quái vật, nền được tạo bằng Google Nano Banana Pro (Gemini) qua `tools/gen_art.mjs`
